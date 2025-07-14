@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>201 Cosas que me gustan de ti</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #d63384;
+    }
+
+    h1, h2 {
+      margin: 40px 20px 20px;
+    }
+
+    button {
+      background-color: #ff66a3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin-top: 30px;
+    }
+
+    .lista {
+      max-width: 700px;
+      margin: 20px auto;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .item {
+      background: #fff0f5;
+      border-radius: 15px;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: showItem 0.5s ease forwards;
+      text-align: left;
+    }
+
+    .razon-titulo {
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 5px;
+        color: #c2185b;
+    }
+
+    .poema-texto {
+        font-style: italic;
+        font-size: 0.95em;
+        line-height: 1.4;
+        white-space: pre-line;
+    }
+
+    @keyframes latido {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .corazon-palpitante {
+      display: inline-block;
+      animation: latido 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes showItem {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="musicaDeFondo" src="https://raw.githubusercontent.com/jesuxzx/Dxd/main/dime%20%5Bj3M-vXdP5Pw%5D.mp3" loop autoplay></audio>
+
+  <h1>Cosas que me gustan de ti <span class="corazon-palpitante">💓</span></h1>
+  <div id="primeraParte">
+    <h2>1. su sonrisa<br>2. sus ojitos<br>3. su forma de hablar<br>4. Cómo me hace sentir<br>5. Tu ternura</h2>
+    <button onclick="mostrarSorpresa()">Da click aqui amor</button>
+  </div>
+
+  <div id="segundaParte" style="display:none;">
+    <h1>¿En serio cree que solo serian 5 jajaja?</h1>
+    <button onclick="mostrarLista()">Aquí van 201 cosas que me encantan de ti</button>
+  </div>
+
+  <div id="lista" class="lista"></div>
+
+  <script>
+    const cosas = [
+      {
+        razon: "Tus ojitos",
+        poema: "En tu mirada, mi cielo se halla,\ndos luceros que nunca fallan,\nreflejo de un amor que estalla,\ndonde mi alma se acalla."
+      },
+      {
+        razon: "Tu voz",
+        poema: "Tu voz, dulce melodía que me calma,\nun susurro que mi ser abraza,\ncada palabra que mi oído amasa,\nes la música que mi corazón enlaza."
+      },
+      {
+        razon: "Tu cabello",
+        poema: "Como cascada de seda, tu cabello, sin igual,\nadorna tu figura, realce divinal.\nMe invita a perderme, a soñar sin final,\nen tu dulce presencia, amor celestial."
+      },
+      {
+        razon: "Tu forma de ser",
+        poema: "Tu forma de ser, un don inmenso,\npura alegría, un alma sin denso.\nEres la chispa que en mi vida enciendo,\npor tu esencia única, yo me enciendo."
+      },
+      {
+        razon: "Tu forma de querer",
+        poema: "Tu forma de querer, tan tierna y leal,\nun abrazo del alma, un amor sin igual.\nEn cada gesto, en cada señal,\nsiento tu cariño, un amor fundamental."
+      },
+      {
+        razon: "Tu forma de amar",
+        poema: "Amar contigo es un arte sutil,\nuna danza de almas, un sentir gentil.\nTu forma de amar, mi guía, mi perfil,\nmi refugio eterno, mi dulce abril."
+      },
+      {
+        razon: "Me haces reír",
+        poema: "Tu risa es la cura, el bálsamo al dolor,\nun eco de alegría, mi mayor motor.\nMe haces reír con tanto fulgor,\nque olvido las penas, mi bello amor."
+      },
+      {
+        razon: "Me apoyas",
+        poema: "En cada paso, tu mano me guía,\nme apoyas siempre, me das energía.\nEn ti confío, mi fuerza, mi algarabía,\nmi roca inquebrantable, mi dulce valía."
+      },
+      {
+        razon: "Me haces sentir especial",
+        poema: "Con cada mirada, cada dulce palabra,\nme haces sentir único, un alma rara.\nTu amor me eleva, mi espíritu no para,\nporque en tus ojos, mi mundo se aclara."
+      },
+      {
+        razon: "Me ayudas a superar mis miedos, mis temores",
+        poema: "Tus manos firmes disipan mis miedos,\ntu voz serena calma mis enredos.\nContigo soy valiente, sin recelos,\nsuperando todo, mis dulces anhelos."
+      },
+      {
+        razon: "Ver cómo vas mejorando para estar conmigo",
+        poema: "Tu esfuerzo me inspira, tu afán por crecer,\nver cómo mejoras, un bello placer.\nPor nuestro futuro, por nuestro querer,\nmi amor por ti no deja de florecer."
+      },
+      {
+        razon: "Me haces sentir como nunca me han hecho sentir",
+        poema: "Un sentir nuevo, un amor sin igual,\nalma gemela, un lazo irreal.\nMe elevas al cielo, sin final,\ncontigo es distinto, un amor inmortal."
+      },
+      {
+        razon: "Lo linda que eres",
+        poema: "Tu belleza irradia, un fulgor sin fin,\nno solo por fuera, también por dentro, mi afín.\nLinda por tu esencia, desde el confín,\nmi corazón te nombra, mi dulce jazmín."
+      },
+      {
+        razon: "Me amas por quién soy",
+        poema: "Me amas sin filtros, sin máscaras, mi amor,\ntal como soy, con mi luz y mi error.\nTu aceptación es mi mayor valor,\ncontigo soy libre, sin temor."
+      },
+      {
+        razon: "Me amas a pesar de mis defectos",
+        poema: "Mis sombras no asustan tu noble corazón,\nme amas completo, sin discusión.\nMis defectos son parte de esta bendición,\nque me amas por completo, sin restricción."
+      },
+      {
+        razon: "Porque eres única",
+        poema: "No hay dos como tú, eres singular,\nen cada detalle, un don que admirar.\nTu esencia me atrapa, me hace soñar,\npor ser tan única, te voy a amar."
+      },
+      {
+        razon: "Me haces olvidarme de todo",
+        poema: "En tu presencia, el mundo se esfuma,\nlos ruidos se callan, no hay bruma.\nMe pierdo en tu esencia, una dulzura,\ny olvido lo demás, en tu armadura."
+      },
+      {
+        razon: "Me haces feliz",
+        poema: "Tu luz ilumina mi sendero y mi ser,\nme haces feliz con solo tu querer.\nEres la causa de mi amanecer,\nmi eterna alegría, mi dulce placer."
+      },
+      {
+        razon: "Por salvarme",
+        poema: "De la oscuridad, me tendiste tu mano,\nme salvaste el alma, me hiciste verano.\nEres mi ángel, mi refugio, mi hermano,\npor salvarme, te amo, en este arcano."
+      },
+      {
+        razon: "Eres perfecta",
+        poema: "Perfecta en mi mundo, perfecta para mí,\ncada detalle tuyo, es justo así.\nNo busco más, en ti me vi,\nmi ideal de amor, mi dulce sí."
+      },
+      {
+        razon: "Me gustan tus labios",
+        poema: "Tus labios de rosa, un deseo sutil,\ninvitan a besos, en un dulce festín.\nUn simple roce, un suspiro, un motín,\nque encienden mi alma, mi bello botín."
+      },
+      {
+        razon: "Tu personalidad",
+        poema: "Tu personalidad, un universo a explorar,\nllena de matices, un dulce manjar.\nMe atrapa, me inspira, me hace soñar,\ncontigo a mi lado, quiero volar."
+      },
+      {
+        razon: "Tu sinceridad",
+        poema: "La verdad en tus ojos, un don especial,\ntu sinceridad, un amor leal.\nConstruyes confianza, un muro real,\ncontigo todo es puro, sin igual."
+      },
+      {
+        razon: "Tu amor",
+        poema: "Tu amor me envuelve, un manto de luz,\nun refugio seguro, mi dulce cruz.\nEn cada latido, mi ser conduces,\nmi amor por ti crece, mi bella luz."
+      },
+      {
+        razon: "Tus enojos",
+        poema: "Hasta en tu enojo hay un encanto especial,\nuna ternura oculta, un gesto ideal.\nSé que es de amor, que es algo casual,\ny me derrites, mi bella cristal."
+      },
+      {
+        razon: "Tus celos de amor",
+        poema: "Tus celos de amor, un toque de pasión,\nmuestran tu cariño, sin condición.\nUn dulce reclamo, una linda expresión,\nque aviva la llama de mi corazón."
+      },
+      {
+        razon: "Tu carácter",
+        poema: "Tu carácter firme, tu espíritu audaz,\nme inspiran y retan, me dan solaz.\nEres la fuerza que mi ser desata,\nmi guía, mi rumbo, mi dulce paja."
+      },
+      {
+        razon: "Tus chistes",
+        poema: "Tus chistes alegran mi día, mi existir,\nun soplo de risa, un dulce sentir.\nMe encanta tu ingenio, tu forma de ir,\nhaciéndome feliz, mi eterno porvenir."
+      },
+      {
+        razon: "Tu confianza hacia mí",
+        poema: "Tu confianza me abraza, me da libertad,\nun lazo inquebrantable, una realidad.\nMe siento seguro en tu honestidad,\ncontigo mi alma encuentra su verdad."
+      },
+      {
+        razon: "Atenta",
+        poema: "Siempre atenta, a cada detalle, mi amor,\npercibes mis deseos, sin error.\nTu atención es un bálsamo, un fulgor,\nque ilumina mi vida, mi bello tesoro."
+      },
+      {
+        razon: "Dormilona",
+        poema: "Tu lado dormilón, tan tierno, tan sereno,\nun ángel en descanso, un dulce estreno.\nVerte dormir es mi paz, mi anhelo,\nmi corazón se calma, mi bello cielo."
+      },
+      {
+        razon: "Tu humor",
+        poema: "Tu humor me contagia, me llena de risa,\nun bálsamo al alma, sin prisa.\nContigo la vida es una dulce brisa,\nmi cómplice eterno, mi gran sorpresa."
+      },
+      {
+        razon: "Tu risa",
+        poema: "Tu risa es música, la más bella canción,\nun eco de alegría en mi corazón.\nMe inunda el alma, sin discusión,\nmi dulce melodía, mi gran pasión."
+      },
+      {
+        razon: "La forma en las que hago enojar",
+        poema: "Hasta cuando te hago enojar, mi dulce flor,\nveo tu ternura, tu genuino amor.\nEs parte de nuestro baile, de nuestro fulgor,\ny aún así te quiero, sin ningún temor."
+      },
+      {
+        razon: "Tus logros",
+        poema: "Cada logro tuyo, mi orgullo sin fin,\nver tu esfuerzo dar fruto, mi dulce jazmín.\nEres inspiración, de principio a fin,\nmi campeona eterna, mi bello festín."
+      },
+      {
+        razon: "Tus buenos días",
+        poema: "Tus buenos días, el sol de mi alba,\nun mensaje que mi ánimo salva.\nComenzar el día con tu dulce palabra,\nes la bendición que mi alma abraza."
+      },
+      {
+        razon: "Tus buenas noches",
+        poema: "Tus buenas noches, mi arrullo al dormir,\nla promesa de un nuevo porvenir.\nCierro los ojos, pensando en ti,\nmi dulce sueño, mi eterno sentir."
+      },
+      {
+        razon: "Tu corazón",
+        poema: "Tu corazón inmenso, un jardín de bondad,\nlleno de nobleza, de pura verdad.\nGeneroso y tierno, con gran humildad,\nes el centro de mi felicidad."
+      },
+      {
+        razon: "La tranquilidad que me das",
+        poema: "En tu presencia, la paz encuentro yo,\nla calma que mi espíritu anheló.\nTu amor es mi refugio, mi tibio calor,\nla tranquilidad que a mi alma llegó."
+      },
+      {
+        razon: "Tu encanto",
+        poema: "Tu encanto me atrapa, un hechizo sutil,\nen cada gesto, un bello perfil.\nMe seduces el alma, mi dulce carril,\nmi eterno deleite, mi tierno vivir."
+      },
+      {
+        razon: "Porque me escuchas",
+        poema: "Con oído atento, tu paciencia es sin par,\nme escuchas siempre, sin juzgar.\nMis pensamientos, mis sueños, mi mar,\ncontigo se abren, sin dudar."
+      },
+      {
+        razon: "Estás para mí en los días buenos y malos",
+        poema: "En sol y en sombra, en risa y en pena,\ntú estás conmigo, mi dulce cadena.\nTu apoyo incondicional, mi alma serena,\nmi compañera eterna, mi luz morena."
+      },
+      {
+        razon: "Eres mi bebé",
+        poema: "Mi dulce bebé, mi tierna verdad,\nen tus brazos encuentro mi felicidad.\nEres mi niña, mi fragilidad,\nmi amor inmenso, sin igual."
+      },
+      {
+        razon: "Mi princesita",
+        poema: "Princesa de mi cuento, dueña de mi ser,\ntu encanto realza mi dulce querer.\nEn tus ojos veo mi amanecer,\nmi bella princesa, mi eterno placer."
+      },
+      {
+        razon: "Mi reina",
+        poema: "Reina de mi vida, de mi corazón,\ntu majestad me llena de pasión.\nGobiernas mi alma, sin discusión,\nmi soberana, mi gran bendición."
+      },
+      {
+        razon: "Porque eres mi futura esposa",
+        poema: "Pensar en ti como mi esposa, mi amor,\nes el sueño más bello, mi mayor valor.\nUn futuro juntos, sin temor,\nmi compañera eterna, mi dulce fulgor."
+      },
+      {
+        razon: "Tu empatía",
+        poema: "Tu empatía, un don que admiro yo,\nte pones en mi lugar, sin dolor.\nComprendes mi alma, mi interior,\nmi confidente, mi gran amor."
+      },
+      {
+        razon: "Tu fidelidad",
+        poema: "Tu fidelidad es un tesoro sin par,\nun lazo irrompible, un eterno amar.\nMi confianza en ti no va a menguar,\nmi amor por ti, siempre va a brillar."
+      },
+      {
+        razon: "Tu lealtad",
+        poema: "Leal como nadie, contigo quiero estar,\ntu lealtad es un faro, un dulce lugar.\nEn ti confío ciegamente, sin dudar,\nmi compañera fiel, hasta el final."
+      },
+      {
+        razon: "Lo pro que eres en Mobile Legends y Robloxito",
+        poema: "En el mundo virtual, tu destreza sin par,\ncon Mobile y Roblox, me haces soñar.\nTu habilidad me asombra, me hace vibrar,\nmi gamer favorita, te voy a amar."
+      },
+      {
+        razon: "Tu creatividad",
+        poema: "Tu mente brillante, un torbellino de luz,\ntu creatividad, mi dulce cruz.\nCreas magia en todo, mi dulce aducción,\nmi inspiración eterna, mi gran ilusión."
+      },
+      {
+        razon: "Nuestra conexión",
+        poema: "La conexión que nos une, un lazo especial,\nsin palabras nos entendemos, es algo real.\nNuestras almas se tocan, sin igual,\nuna conexión divina, un amor sin final."
+      },
+      {
+        razon: "Tus beshos",
+        poema: "Tus besos, un dulce néctar de amor,\nque encienden mi alma, mi dulce fulgor.\nCada roce, una chispa, un calor,\nque me lleva al cielo, mi dulce sabor."
+      },
+      {
+        razon: "Tu carita hermosha",
+        poema: "Tu carita hermosa, un lienzo de paz,\ncon cada expresión, mi dulce solaz.\nPerfecta en cada rasgo, sin fugaz,\nmi hermosa princesa, mi eterno solaz."
+      },
+      {
+        razon: "Lo guapa que eres",
+        poema: "Tu belleza deslumbra, un fulgor sin igual,\nme dejas sin aliento, un sentir real.\nLo guapa que eres, algo celestial,\nmi musa inspiradora, mi dulce caudal."
+      },
+      {
+        razon: "Porque eres mi mocosita",
+        poema: "Mi dulce mocosita, mi niña especial,\ntu inocencia me encanta, un amor sin igual.\nEres mi todo, mi bello caudal,\nmi mocosita amada, mi dulce ideal."
+      },
+      {
+        razon: "Porque eres mi loreycita",
+        poema: "Mi Loreycita querida, mi tesoro mayor,\ntu nombre en mis labios, mi dulce sabor.\nEres mi Lorey, mi bello fulgor,\nmi amor por ti crece, sin ningún temor."
+      },
+      {
+        razon: "Porque eres mi razón de existir",
+        poema: "Eres la razón que me impulsa a vivir,\nel aire que respiro, mi dulce porvenir.\nMi existencia cobra sentido, al existir,\nsolo por ti, mi dulce porvenir."
+      },
+      {
+        razon: "Tus llamadas de WhatsApp",
+        poema: "Tus llamadas, el eco de tu voz,\nun bálsamo al alma, mi dulce toz.\nCada palabra, un tesoro veloz,\nque acorta la distancia, mi dulce voz."
+      },
+      {
+        razon: "Tus Osh, Ush, Ash",
+        poema: "Tus dulces sonidos, un lenguaje de amor,\nOsh, Ush, Ash, mi mayor fulgor.\nPequeñas ternuras, que calman mi dolor,\nmi lenguaje secreto, mi dulce amor."
+      },
+      {
+        razon: "Por ser mi niña preciosa",
+        poema: "Mi niña preciosa, mi joya sin par,\ntu inocencia me atrapa, me hace soñar.\nEres mi todo, mi dulce mar,\nmi niña preciosa, te voy a amar."
+      },
+      {
+        razon: "Eres importante",
+        poema: "Importante en mi vida, eres mi pilar,\nsin ti mi mundo no podría girar.\nTu presencia es un faro, un dulce lugar,\nmi razón de ser, mi dulce azar."
+      },
+      {
+        razon: "Eres maravillosa",
+        poema: "Maravillosa en cada matiz de tu ser,\nun regalo del cielo, un bello placer.\nTu magia me envuelve, al amanecer,\nmi maravillosa, mi dulce querer."
+      },
+      {
+        razon: "Tus te amo",
+        poema: "Tus 'te amo', un eco en mi corazón,\nla melodía más bella, mi dulce canción.\nCada vez que los dices, mi gran bendición,\nque me llena el alma, sin discusión."
+      },
+      {
+        razon: "Tus \"mi niño\"",
+        poema: "Tus \"mi niño\", un susurro que me da paz,\nuna dulce caricia, un suave solaz.\nMe haces sentir amado, sin fugaz,\nmi dulce niña, mi bello solaz."
+      },
+      {
+        razon: "Tus stickers",
+        poema: "Tus stickers alegran mi día, mi sentir,\npequeñas sonrisas que me hacen vivir.\nTu ingenio en cada uno, mi dulce porvenir,\nmi artista favorita, sin fin."
+      },
+      {
+        razon: "Tus mensajes",
+        poema: "Tus mensajes, gotas de amor en mi ser,\ncada palabra me hace florecer.\nEsperar tus textos, un bello placer,\nmi dulce consuelo, mi amanecer."
+      },
+      {
+        razon: "Tus bromas",
+        poema: "Tus bromas me alegran, me hacen reír,\nun toque de chispa, un dulce vivir.\nContigo la vida es un hermoso porvenir,\nmi cómplice eterna, sin fin."
+      },
+      {
+        razon: "Porque eres mi oxígeno",
+        poema: "Eres el aire que respiro, mi dulce verdad,\nsin ti mi mundo pierde su claridad.\nMi oxígeno vital, mi felicidad,\nmi amor eterno, sin igual."
+      },
+      {
+        razon: "Porque tengo miedo a perderte",
+        poema: "El miedo a perderte, un temor profundo,\nporque sin ti, no concibo mi mundo.\nEres mi todo, mi amor rotundo,\nmi anhelo constante, mi amor fecundo."
+      },
+      {
+        razon: "Porque me gustas mucho",
+        poema: "Me gustas tanto, que no puedo evitar,\nque mi corazón por ti no deje de vibrar.\nTu presencia me encanta, mi dulce mirar,\nmi deseo más grande, mi tierno lugar."
+      },
+      {
+        razon: "Porque estoy muy enamorado de ti",
+        poema: "Enamorado de ti, sin vuelta atrás,\nmi corazón te clama, sin solaz.\nEres mi universo, mi paz,\nmi amor más grande, mi dulce solaz."
+      },
+      {
+        razon: "Porque te extraño mucho",
+        poema: "Tu ausencia es un eco, un vacío en mi ser,\nte extraño tanto, que duele el querer.\nAnsío tu abrazo, mi dulce placer,\nmi alma te busca, al amanecer."
+      },
+      {
+        razon: "Porque te necesito en mi día a día",
+        poema: "En cada amanecer, te quiero a mi lado,\nen cada momento, tu amor me ha salvado.\nTe necesito siempre, mi dulce legado,\nmi luz, mi camino, mi amor anhelado."
+      },
+      {
+        razon: "Porque para mí lo eres todo",
+        poema: "Eres mi universo, mi cielo, mi sol,\nmi razón de ser, mi dulce farol.\nPara mí lo eres todo, sin control,\nmi amor inmenso, mi dulce arrebol."
+      },
+      {
+        razon: "Nuestros hijitos",
+        poema: "Soñar con hijitos, un futuro a construir,\npequeñas vidas que nos harán vivir.\nNuestro amor se expande, sin fin,\nnuestro legado, nuestro dulce jazmín."
+      },
+      {
+        razon: "Tus cachetitos",
+        poema: "Tus cachetitos suaves, un toque de dulzura,\ninvitan a besos, sin ninguna mesura.\nSon como nubes, de pura ternura,\nmi encanto diario, mi bella figura."
+      },
+      {
+        razon: "Tus piropos",
+        poema: "Tus piropos, caricias en mi corazón,\ncada palabra tuya, mi bendición.\nMe haces sentir bello, sin discusión,\nmi dulce poeta, mi gran ilusión."
+      },
+      {
+        razon: "Tu paciencia",
+        poema: "Tu paciencia es un don, un alma de paz,\nme enseñas con calma, sin solaz.\nEn cada momento, me das un solaz,\nmi dulce maestra, mi bello solaz."
+      },
+      {
+        razon: "Tu ternura",
+        poema: "Tu ternura me envuelve, un manto de amor,\nme calmas el alma, sin ningún temor.\nCada gesto tuyo, mi dulce fulgor,\nmi refugio eterno, mi mayor valor."
+      },
+      {
+        razon: "Tu lunar",
+        poema: "Tu lunar, un detalle, una marca de ti,\nun punto en tu piel, que me hace feliz.\nLo veo y te amo, desde aquí,\nmi marca de amor, mi dulce matiz."
+      },
+      {
+        razon: "Tus manitos",
+        poema: "Tus manitos suaves, mi refugio al andar,\nse entrelazan las nuestras, sin dudar.\nCon ellas me guías, me haces soñar,\nmi dulce compañía, mi eterno lugar."
+      },
+      {
+        razon: "Tus piecitos chiquitos",
+        poema: "Tus piecitos chiquitos, que me hacen andar,\npor caminos de sueños, sin dudar.\nMe llevan a ti, a mi dulce lugar,\nmi pequeña guía, mi dulce azar."
+      },
+      {
+        razon: "Tu nariz",
+        poema: "Tu nariz perfecta, un toque de arte,\nadorna tu rostro, en cada parte.\nUn simple detalle, que me comparte,\nla belleza pura de mi contraparte."
+      },
+      {
+        razon: "Por ser tu esposito",
+        poema: "Ser tu esposito, mi mayor bendición,\nel título más bello, mi gran ilusión.\nContigo la vida, una dulce canción,\nmi eterno compañero, sin discusión."
+      },
+      {
+        razon: "Tu alma",
+        poema: "Tu alma pura, un cristal sin igual,\nllena de luz, un amor real.\nMe conecto contigo, sin banal,\nmi alma gemela, mi dulce cristal."
+      },
+      {
+        razon: "Tu dulzura, lo dulce que eres conmigo",
+        poema: "Tu dulzura me envuelve, un sabor sin par,\ncada gesto tuyo, me hace soñar.\nContigo la vida es un dulce manjar,\nmi eterna miel, mi dulce lugar."
+      },
+      {
+        razon: "Tus corazoncitos en mis fotos o audios",
+        poema: "Tus corazoncitos, pequeños fulgores,\nen fotos y audios, llenos de amores.\nMe llenan el alma, con mil colores,\npequeñas muestras, de grandes amores."
+      },
+      {
+        razon: "Tu internet chafa JAJAJAJA",
+        poema: "Hasta tu internet chafa me hace reír,\nuna pequeña falla, un dulce porvenir.\nDemuestra tu esencia, sin fin,\nmi dulce conexión, mi gran botín."
+      },
+      {
+        razon: "Me esperas cuando me voy a trabajar",
+        poema: "Tu espera es un bálsamo, un dulce calor,\nsaber que me aguardas, mi mayor valor.\nMe da la fuerza, mi dulce motor,\nmi hogar es donde estás, mi dulce amor."
+      },
+      {
+        razon: "Vivir en mi mente todos los días y no pagar renta >:(",
+        poema: "En mi mente habitas, sin pagar alquiler,\nocupas mis sueños, mi dulce placer.\nUn intruso querido, sin qué hacer,\nmi eterna inquilina, mi dulce querer."
+      },
+      {
+        razon: "Tus, ti, chi, Shi",
+        poema: "Tus dulces sonidos, tu lenguaje peculiar,\nti, chi, shi, me hacen suspirar.\nPequeñas ternuras, que me hacen soñar,\nmi lenguaje de amor, sin igual."
+      },
+      {
+        razon: "Tus \"wey\" cuando estamos jugando de bromis",
+        poema: "Tu \"wey\" de broma, un guiño en el juego,\nmuestra tu alegría, sin ningún ruego.\nMe encanta tu chispa, tu dulce apego,\nmi compañera eterna, mi dulce fuego."
+      },
+      {
+        razon: "Lo mucho que te admiro",
+        poema: "Te admiro en todo, en cada latir,\ntu fuerza, tu esencia, mi dulce porvenir.\nEres mi ejemplo, mi dulce sentir,\nmi musa inspiradora, sin fin."
+      },
+      {
+        razon: "Todas las cosas bonitas que me dices",
+        poema: "Tus palabras bonitas, un bálsamo al alma,\nme llenan de amor, me dan la calma.\nCada frase tuya, mi dulce palma,\nmi poesía eterna, mi dulce alarma."
+      },
+      {
+        razon: "Lo orgulloso que estoy de que seas mi niña preciosa",
+        poema: "Mi orgullo por ti, sin límite, sin par,\nmi niña preciosa, mi dulce azar.\nVer tu esencia brillar, me hace soñar,\nmi mayor tesoro, te voy a amar."
+      },
+      {
+        razon: "Tus pestañas",
+        poema: "Tus pestañas largas, un velo sutil,\nque enmarcan tus ojos, mi dulce carril.\nUn simple aleteo, un bello perfil,\nque me hipnotizan, mi tierno abril."
+      },
+      {
+        razon: "Vas a la iglesia",
+        poema: "Tu fe te guía, tu alma de luz,\nvas a la iglesia, mi dulce cruz.\nCompartimos valores, sin discusiones,\nmi compañera de vida, mi dulce luz."
+      },
+      {
+        razon: "Porque te amo, eres única, especial, eres mi todo",
+        poema: "Te amo con el alma, mi todo, mi ser,\núnica y especial, mi dulce querer.\nEres mi universo, al amanecer,\nmi razón de ser, mi dulce placer."
+      },
+      {
+        razon: "Lo tierna y hermosa que te veías de pequeña y lo tierna, hermosa, shula, bella, divina que te ves ahora",
+        poema: "Desde pequeña, tu encanto real,\ny ahora, tu belleza es algo ideal.\nTierna y hermosa, mi dulce caudal,\nmi amor por ti crece, sin igual."
+      },
+      {
+        razon: "Soy tu fan número 1",
+        poema: "Tu fan número uno, sin duda, soy yo,\nte sigo en todo, a donde quiera que vas.\nTu éxito es mi alegría, mi dulce solaz,\nmi admiración por ti, sin fugaz."
+      },
+      {
+        razon: "Tu desempeño",
+        poema: "Tu desempeño me asombra, tu fuerza y pasión,\nlo das todo en lo que haces, sin objeción.\nEres una guerrera, mi gran bendición,\nmi inspiración eterna, sin discusión."
+      },
+      {
+        razon: "Tu carisma",
+        poema: "Tu carisma irradia, una luz sin igual,\natesora mi alma, mi dulce caudal.\nAtraes a todos, es algo real,\nmi estrella brillante, mi dulce ideal."
+      },
+      {
+        razon: "Cómo me tratas",
+        poema: "Tu trato es dulce, con tanto cariño,\nme envuelves en amor, desde niño.\nTu respeto y ternura, mi bello guiño,\nmi dulce refugio, mi eterno piniño."
+      },
+      {
+        razon: "La emoción de esperar tus mensajes",
+        poema: "Esperar tus mensajes, un dulce anhelo,\ncada notificación, un soplo de cielo.\nTu voz en mi mente, sin recelo,\nmi dulce esperanza, mi bello consuelo."
+      },
+      {
+        razon: "La forma en que me haces sentir que estás conmigo aunque estemos lejos",
+        poema: "La distancia no existe, si tú estás aquí,\nen cada pensamiento, te siento en mí.\nMe haces sentir cerca, hasta el fin,\nmi dulce presencia, mi eterno jazmín."
+      },
+      {
+          razon: "La confianza que tenemos en nuestra relación",
+        poema: "Nuestra confianza es un pilar, un gran tesoro,\nconstruimos un lazo, sin ningún lloro.\nEn ti confío, mi dulce decoro,\nmi amor contigo, mi bello oro."
+      },
+      {
+        razon: "La forma en que nos apoyamos mutuamente a pesar de no estar físicamente juntos",
+        poema: "Aunque lejos estemos, nos damos la mano,\nnuestro apoyo es constante, sin reclamo.\nLa distancia no importa, nos amamos,\nnuestro amor a distancia, sin engaño."
+      },
+      {
+        razon: "La manera en que nos hacemos reír y nos divertimos juntos a través de la distancia",
+        poema: "La risa compartida, un puente a la distancia,\nnos divertimos siempre, con elegancia.\nLa alegría nos une, con constancia,\nmi dulce compañía, mi dulce instancia."
+      },
+      {
+        razon: "La emoción de planear visitas y encontrarnos",
+        poema: "Planear tus visitas, un dulce motor,\nla emoción me inunda, sin ningún temor.\nEl reencuentro cercano, mi dulce fulgor,\nmi amor por ti crece, mi mayor valor."
+      },
+      {
+        razon: "La manera en que nos demostramos que el amor no tiene barreras",
+        poema: "Sin barreras, nuestro amor es real,\ndemostramos al mundo, es algo ideal.\nLa distancia no frena, este caudal,\nnuestro amor sin límites, un amor inmortal."
+      },
+      {
+        razon: "La forma en que nuestra relación se fortalece con cada desafío que superamos juntos",
+        poema: "Cada reto nos une, nos hace crecer,\nnuestra relación se fortalece, al amanecer.\nJuntos somos invencibles, sin perecer,\nmi amor por ti, no deja de florecer."
+      },
+      {
+        razon: "La emoción de decir: un día más de novios",
+        poema: "Un día más a tu lado, un dulce regalo,\nla emoción me embriaga, sin ningún halo.\nCada día contigo, mi dulce galgo,\nmi amor por ti crece, mi dulce vago."
+      },
+      {
+        razon: "La emoción de haber cumplido un mes e ir por más",
+        poema: "Un mes de aventura, un inicio genial,\ny vamos por más, un amor sin igual.\nNuestra historia se escribe, algo real,\nmi amor por ti crece, mi dulce caudal."
+      },
+      {
+        razon: "Lo mucho que amo presumirte",
+        poema: "Presumirte a los vientos, mi orgullo sin fin,\neres mi tesoro, mi dulce jazmín.\nQue el mundo se entere, de principio a fin,\nque eres mi amor, mi bello botín."
+      },
+      {
+        razon: "Que a pesar de los obstáculos que nos pone la vida, tú y yo los superamos y seguimos juntos",
+        poema: "Los obstáculos no frenan nuestro andar,\njuntos los superamos, sin dudar.\nNuestro amor es fuerte, un dulce pilar,\nmi compañero eterno, hasta el final."
+      },
+      {
+        razon: "Tu pumpe <3",
+        poema: "Tu \"pumpe\" me encanta, un sonido especial,\npequeña ternura, un amor sin igual.\nMe llena el alma, un dulce caudal,\nmi amor por ti crece, mi dulce ideal."
+      },
+      {
+        razon: "Las ganas que tengo de verte y abrazarte",
+        poema: "Mis ganas de verte, un fuego en mi ser,\nabrazarte fuerte, mi dulce placer.\nContar los segundos, al amanecer,\nmi anhelo constante, mi dulce querer."
+      },
+      {
+        razon: "Lo importante que soy para ti",
+        poema: "Saber que soy importante, un don sin igual,\nme llena el alma, un amor real.\nTu amor me eleva, mi dulce caudal,\nmi razón de ser, mi dulce ideal."
+      },
+      {
+        razon: "Lo mucho que te preocupas por mí",
+        poema: "Tu preocupación me abraza, me da seguridad,\nun dulce cuidado, una gran bondad.\nMe siento protegido, con gran lealtad,\nmi ángel guardián, mi dulce verdad."
+      },
+      {
+        razon: "Cuando me dices que soy muy especial para ti y me dices que no me quieres perder porque conmigo lo tienes todo",
+        poema: "Tus palabras me elevan, me hacen soñar,\nque soy especial, me haces vibrar.\nNo me quieres perder, es algo real,\ncontigo lo tienes todo, un amor sin igual."
+      },
+      {
+        razon: "Tus mensajitos de Mobile Legends diciendo que si ganamos esto o si perdemos esto",
+        poema: "Tus mensajes de juego, tu pasión al ganar,\nme divierten y atrapan, sin dudar.\nContigo la victoria es algo real,\nmi gamer favorita, mi dulce ideal."
+      },
+      {
+        razon: "El color de tus ojitos",
+        poema: "El color de tus ojos, un cielo sin par,\nme pierdo en ellos, sin dudar.\nUn universo entero, para soñar,\nmi dulce mirada, mi bello azar."
+      },
+      {
+        razon: "Porque eres mi muñequita de porcelana",
+        poema: "Mi muñequita de porcelana, tan frágil, tan real,\nmi amor te protege, sin igual.\nEres mi tesoro, mi dulce caudal,\nmi muñequita amada, mi dulce ideal."
+      },
+      {
+        razon: "Cuando madrugas :3",
+        poema: "Tu madrugar me asombra, tu esfuerzo sin par,\npor nuestro futuro, me haces soñar.\nTu dedicación me inspira, sin dudar,\nmi dulce guerrera, te voy a amar."
+      },
+      {
+        razon: "Me amas",
+        poema: "Tu amor me envuelve, un manto de luz,\nme amas completo, mi dulce cruz.\nEn cada latido, mi ser conduces,\nmi amor por ti crece, mi bella luz."
+      },
+      {
+        razon: "A pesar de la distancia, nuestro amor crece y crece cada día más",
+        poema: "La distancia no es freno, es un desafío,\nnuestro amor crece fuerte, mi dulce mío.\nCada día más cerca, un dulce envío,\nmi amor por ti, sin desvarío."
+      },
+      {
+        razon: "Tus dramas",
+        poema: "Hasta tus dramas tienen un encanto especial,\nuna ternura oculta, un gesto ideal.\nMe hacen reír, es algo casual,\ny aún así te quiero, mi bella cristal."
+      },
+      {
+        razon: "Lo feliz que me haces cuando estamos plática y plática toda la noche",
+        poema: "Nuestras noches de charla, un tesoro sin par,\nme haces feliz, sin dudar.\nLas horas se pasan, sin parar,\nmi dulce compañía, mi bello azar."
+      },
+      {
+        razon: "Tu amor",
+        poema: "Tu amor me envuelve, un manto de luz,\nun refugio seguro, mi dulce cruz.\nEn cada latido, mi ser conduces,\nmi amor por ti crece, mi bella luz."
+      },
+      {
+        razon: "Tu comprensión",
+        poema: "Tu comprensión me calma, me da paz,\nentiendes mi alma, sin solaz.\nMe siento escuchado, sin fugaz,\nmi dulce confidente, mi bello solaz."
+      },
+      {
+        razon: "Tu estatura porque así me puedes llegar a mi pecho",
+        poema: "Tu estatura perfecta, un dulce tamaño,\npara llegar a mi pecho, sin engaño.\nUn abrazo perfecto, sin daño,\nmi dulce medida, mi amor, mi apaño."
+      },
+      {
+        razon: "Tus “amor, mi amol”",
+        poema: "Tus \"amor, mi amol\", un dulce susurro,\nque llena mi alma, sin ningún apuro.\nPequeñas palabras, un gran conjuro,\nmi dulce melodía, mi amor más puro."
+      },
+      {
+          razon: "Que ames a mis dos nombres Jesús Manuel <3",
+        poema: "Que ames mis nombres, Jesús Manuel, mi sentir,\nes un dulce regalo, un bello porvenir.\nMis dos nombres en tus labios, sin fin,\nmi identidad contigo, mi dulce jazmín."
+      },
+      {
+        razon: "Tus dibujitos",
+        poema: "Tus dibujitos, arte en tus manos, mi amor,\ncada trazo tuyo, mi dulce fulgor.\nMe llenan de alegría, sin ningún temor,\nmi dulce artista, mi mayor valor."
+      },
+      {
+        razon: "Nuestros nietitos",
+        poema: "Ellos nos unen, un amor animal,\nnuestros nietitos, un lazo real.\nPequeña vida, un dulce caudal,\nque nos complementa, sin igual."
+      },
+      {
+        razon: "La emoción que me da escribirte cartas",
+        poema: "Escribirte cartas, un dulce sentir,\ncada palabra, un bello porvenir.\nPlasmar mi amor, sin fin,\nmi dulce escritura, mi gran botín."
+      },
+      {
+        razon: "Eres mi refugio",
+        poema: "Eres mi refugio, mi puerto de paz,\ndonde mi alma encuentra solaz.\nEn tus brazos me siento capaz,\nmi dulce morada, mi bello solaz."
+      },
+      {
+        razon: "Te gusto",
+        poema: "Saber que te gusto, un fuego en mi ser,\nme llena de alegría, un dulce placer.\nTu mirada me atrapa, al amanecer,\nmi dulce anhelo, mi eterno querer."
+      },
+      {
+        razon: "La emoción que me da el ver cómo deseas un futuro conmigo <3",
+        poema: "Tu deseo de un futuro, mi sueño hecho real,\nla emoción me embriaga, es algo ideal.\nConstruir contigo, un dulce caudal,\nmi amor por ti crece, sin igual."
+      },
+      {
+        razon: "Cómo eres diferente",
+        poema: "Diferente en tu esencia, única en tu ser,\ntu singularidad me hace florecer.\nNo hay dos como tú, al amanecer,\nmi inspiración eterna, mi dulce querer."
+      },
+      {
+        razon: "La forma en que me compartes tus sentimientos",
+        poema: "Compartir tus sentimientos, un acto de amor,\nme abres tu alma, sin temor.\nTu confianza me honra, mi dulce fulgor,\nmi confidente eterna, mi mayor valor."
+      },
+      {
+        razon: "La forma en que me compartes tus pensamientos",
+        poema: "Compartir tus pensamientos, tu mente sin igual,\nme sumerjo en tu mundo, un dulce caudal.\nNuestra conexión crece, es algo real,\nmi cómplice eterna, mi dulce ideal."
+      },
+      {
+        razon: "La emoción que me da el saber que estamos construyendo un futuro juntos a pesar de la distancia",
+        poema: "Un futuro en la distancia, un sueño a construir,\nla emoción me inunda, al porvenir.\nCada paso nos acerca, sin fin,\nmi amor por ti crece, mi dulce jazmín."
+      },
+      {
+        razon: "La forma en que me haces sentir cuando me dices que me amas",
+        poema: "Tus 'te amo', un eco en mi corazón,\nme hacen sentir amado, sin discusión.\nLa melodía más bella, mi bendición,\nque me llena el alma, sin objeción."
+      },
+      {
+        razon: "Cuando me dices que me necesitas",
+        poema: "Que me necesitas, un dulce sentir,\nme hace sentir valioso, mi dulce porvenir.\nTu dependencia me atrapa, sin fin,\nmi razón de ser, mi dulce jazmín."
+      },
+      {
+        razon: "A pesar de los días malos, seguir juntos y creciendo nuestro amor",
+        poema: "En días grises, nuestro amor brilla más,\nsuperamos lo malo, sin fugaz.\nNuestra unión se fortalece, mi dulce solaz,\nmi amor por ti crece, sin solaz."
+      },
+      {
+        razon: "La emoción que me da el recibir una foto tuya porque eres tan preciosa que de la emoción no sé cómo reaccionar",
+        poema: "Tu foto me llega, un rayo de luz,\nme dejas sin aliento, mi dulce cruz.\nTan preciosa eres, mi dulce aducción,\nque la emoción me embarga, sin discusión."
+      },
+      {
+        razon: "Lo feliz de saber que amas mucho a mis chuegritos",
+        poema: "Que ames a mis chuegritos, un amor sin igual,\nme llena el alma, un dulce caudal.\nTu corazón es noble, algo real,\nmi familia contigo, un amor ideal."
+      },
+      {
+        razon: "Porque te amo con toda mi alma, con todo mi ser, con todo mi corazón, mi bebé",
+        poema: "Te amo con el alma, el ser y el corazón,\nmi dulce bebé, mi gran bendición.\nEres mi todo, sin discusión,\nmi amor eterno, mi gran pasión."
+      },
+      {
+        razon: "Tu sonrisa iluminada por el sol, por la noche y por la vida",
+        poema: "Tu sonrisa brilla, con sol y con luna,\nla luz de mi vida, mi gran fortuna.\nIlumina mi sendero, sin ninguna,\nmi dulce alegría, mi luna."
+      },
+      {
+        razon: "Tus abrazos a distancia",
+        poema: "Tus abrazos a distancia, un sentir virtual,\nme envuelven en amor, algo real.\nLa distancia se acorta, un dulce caudal,\nmi abrazo eterno, mi dulce ideal."
+      },
+      {
+        razon: "Mi debilidad por ti",
+        poema: "Mi debilidad por ti, un dulce control,\nme rindo a tus pies, sin farol.\nEres mi fuerza, mi dulce farol,\nmi amor inmenso, mi dulce arrebol."
+      },
+      {
+        razon: "Nuestras noches de conversación",
+        poema: "Nuestras noches de charla, un tesoro sin par,\nlas horas se pasan, sin parar.\nMe sumerjo en tu mundo, para soñar,\nmi dulce compañía, mi bello azar."
+      },
+      {
+        razon: "Tu forma de hacerme sentir único",
+        poema: "Me haces sentir único, un alma especial,\nen cada gesto, un amor real.\nTu amor me eleva, mi dulce caudal,\nmi razón de ser, mi dulce ideal."
+      },
+      {
+        razon: "Tus detalles de amor",
+        poema: "Tus detalles de amor, pequeños gestos,\nque llenan mi alma, sin ningún pretexto.\nCada uno es un tesoro, sin texto,\nmi dulce sorpresa, mi amor, mi pretexto."
+      },
+      {
+        razon: "Mi amor por tus defectos",
+        poema: "Hasta tus defectos, los amo sin fin,\nporque te hacen única, mi dulce jazmín.\nSon parte de ti, de principio a fin,\nmi amor completo, mi bello botín."
+      },
+      {
+        razon: "Nuestras risas compartidas",
+        poema: "Nuestras risas compartidas, un eco de amor,\nque llena el aire, con dulce fulgor.\nMe haces feliz, sin ningún temor,\nmi dulce alegría, mi mayor valor."
+      },
+      {
+        razon: "Tu forma de escucharme",
+        poema: "Con oído atento, tu paciencia es sin par,\nme escuchas siempre, sin juzgar.\nMis pensamientos, mis sueños, mi mar,\ncontigo se abren, sin dudar."
+      },
+      {
+        razon: "Tus palabras de aliento",
+        poema: "Tus palabras de aliento, mi dulce motor,\nme impulsan a seguir, sin ningún temor.\nMe das la fuerza, mi dulce fulgor,\nmi inspiración eterna, mi mayor valor."
+      },
+      {
+        razon: "Nuestro amor a distancia",
+        poema: "Nuestro amor a distancia, un lazo irreal,\nque supera fronteras, es algo ideal.\nLa distancia no frena, este caudal,\nnuestro amor sin límites, un amor inmortal."
+      },
+      {
+        razon: "Tus gestos de cariño",
+        poema: "Tus gestos de cariño, un dulce sentir,\nme envuelven en amor, sin fin.\nCada caricia, un bello porvenir,\nmi dulce ternura, mi eterno jazmín."
+      },
+      {
+        razon: "Mi corazón late por ti mucho",
+        poema: "Mi corazón por ti late, sin cesar,\nuna melodía eterna, sin parar.\nCada latido, un dulce vibrar,\nmi amor por ti, hasta el final."
+      },
+      {
+          razon: "Nuestros planes a futuro",
+        poema: "Nuestros planes a futuro, un sueño a construir,\nla emoción me inunda, al porvenir.\nCada paso nos acerca, sin fin,\nmi amor por ti crece, mi dulce jazmín."
+      },
+      {
+        razon: "Tu forma de hacerme sentir seguro",
+        poema: "Me haces sentir seguro, en tus brazos estoy,\nmi refugio eterno, donde mi alma va.\nTu amor me protege, sin hoy,\nmi dulce morada, mi paz."
+      },
+      {
+        razon: "Tus beshos virtuales",
+        poema: "Tus besos virtuales, un dulce sabor,\nque acortan la distancia, sin dolor.\nCada uno es un fuego, un fulgor,\nmi dulce caricia, mi amor."
+      },
+      {
+        razon: "Nuestro vínculo",
+        poema: "Nuestro vínculo, un lazo irrompible y real,\nnuestras almas unidas, sin igual.\nUna conexión profunda, un dulce caudal,\nmi amor verdadero, mi dulce ideal."
+      },
+      {
+        razon: "Tu forma de apoyarme",
+        poema: "Tu apoyo incondicional, mi fuerza, mi guía,\nme impulsas a seguir, cada día.\nEn ti confío, mi dulce algarabía,\nmi roca inquebrantable, mi valía."
+      },
+      {
+        razon: "Tus momentos de vulnerabilidad",
+        poema: "Tus momentos de vulnerabilidad, un acto de amor,\nme muestras tu alma, sin temor.\nMe permites amarte, mi dulce fulgor,\nmi confidente, mi mayor valor."
+      },
+      {
+        razon: "Nuestro amor sin límites",
+        poema: "Nuestro amor sin límites, un cielo sin fin,\nque vuela alto, sin jazmín.\nSin barreras, sin fin,\nmi amor eterno, mi dulce botín."
+      },
+      {
+        razon: "Tus ojos brillantes",
+        poema: "Tus ojos brillantes, dos estrellas en mí,\niluminan mi camino, desde aquí.\nReflejo de tu alma, que me hace feliz,\nmi dulce mirada, mi eterno matiz."
+      },
+      {
+        razon: "Nuestras bromas internas",
+        poema: "Nuestras bromas internas, un lenguaje especial,\nque solo nosotros entendemos, algo real.\nLa risa compartida, un dulce caudal,\nmi cómplice eterna, mi dulce ideal."
+      },
+      {
+        razon: "Tu forma de hacerme reír",
+        poema: "Me haces reír con tu ingenio, sin parar,\nmi corazón se alegra, sin dudar.\nTu humor es mi cura, mi dulce azar,\nmi alegría constante, mi dulce lugar."
+      },
+      {
+        razon: "Nuestro amor en crecimiento",
+        poema: "Nuestro amor en crecimiento, un árbol sin fin,\nque da frutos de alegría, mi dulce jazmín.\nCada día más fuerte, de principio a fin,\nmi amor eterno, mi bello botín."
+      },
+      {
+        razon: "Tus palabras de amor",
+        poema: "Tus palabras de amor, un dulce susurro,\nque llena mi alma, sin ningún apuro.\nCada frase tuya, un gran conjuro,\nmi dulce melodía, mi amor más puro."
+      },
+      {
+        razon: "Nuestros sueños compartidos",
+        poema: "Nuestros sueños compartidos, un futuro a crear,\ncada anhelo, un dulce lugar.\nJuntos los construimos, sin dudar,\nmi compañero eterno, hasta el final."
+      },
+      {
+        razon: "Tu forma de hacerme sentir amado",
+        poema: "Me haces sentir amado, con cada latir,\ntu amor me envuelve, sin fin.\nCada gesto tuyo, mi dulce porvenir,\nmi razón de ser, mi dulce jazmín."
+      },
+      {
+        razon: "Nuestros momentos de intimidad",
+        poema: "Nuestros momentos íntimos, un tesoro sin par,\ndonde nuestras almas se dejan llevar.\nLa conexión profunda, un dulce caudal,\nmi amor verdadero, mi dulce ideal."
+      },
+      {
+        razon: "Tu forma de hacerme sentir especial",
+        poema: "Me haces sentir especial, un don sin igual,\nen cada gesto, un amor real.\nTu amor me eleva, mi dulce caudal,\nmi razón de ser, mi dulce ideal."
+      },
+      {
+        razon: "Nuestro amor sin condiciones",
+        poema: "Nuestro amor sin condiciones, puro y real,\nsin límites, sin nada que ocultar.\nTe amo por quien eres, sin dudar,\nmi amor eterno, mi dulce ideal."
+      },
+      {
+        razon: "Tu amor por el Mobile Legends",
+        poema: "Tu amor por el juego, tu pasión al ganar,\nme divierte y atrapa, sin dudar.\nContigo la victoria es algo real,\nmi gamer favorita, mi dulce ideal."
+      },
+      {
+        razon: "Nuestro futuro juntos",
+        poema: "Nuestro futuro juntos, un lienzo a pintar,\ncada trazo de amor, sin dudar.\nConstruyendo sueños, hasta el final,\nmi compañero eterno, mi dulce ideal."
+      },
+      {
+        razon: "Tu forma de hacerme sentir valorado",
+        poema: "Me haces sentir valorado, mi dulce verdad,\nmi esencia brilla, con gran claridad.\nTu amor me eleva, con gran lealtad,\nmi dulce regalo, mi felicidad."
+      },
+      {
+        razon: "Nuestros momentos de felicidad",
+        poema: "Nuestros momentos felices, un tesoro sin par,\nque guardo en mi alma, sin dudar.\nCada risa, un recuerdo, un dulce azar,\nmi alegría contigo, mi bello lugar."
+      },
+      {
+        razon: "Tu forma de hacerme sentir querido",
+        poema: "Me haces sentir querido, con cada latir,\ntu amor me envuelve, sin fin.\nCada gesto tuyo, mi dulce porvenir,\nmi razón de ser, mi dulce jazmín."
+      },
+      {
+        razon: "Nuestro amor sin fronteras",
+        poema: "Nuestro amor sin fronteras, un vuelo sin fin,\nque cruza distancias, mi dulce jazmín.\nSin límites, sin fin,\nmi amor eterno, mi dulce botín."
+      },
+      {
+        razon: "Tus palabras de motivación",
+        poema: "Tus palabras de aliento, mi dulce motor,\nme impulsan a seguir, sin ningún temor.\nMe das la fuerza, mi dulce fulgor,\nmi inspiración eterna, mi mayor valor."
+      },
+      {
+        razon: "Tu amor por el color rojo",
+        poema: "Tu amor por el rojo, un color de pasión,\nque aviva la llama de mi corazón.\nTu esencia vibrante, sin discusión,\nmi dulce llama, mi gran ilusión."
+      },
+      {
+        razon: "Tu forma de hablar",
+        poema: "Tu forma de hablar, un dulce cantar,\nque me envuelve en sueños, sin dudar.\nCada palabra tuya, me hace soñar,\nmi dulce melodía, mi bello azar."
+      },
+      {
+        razon: "Nuestros momentos de alegría",
+        poema: "Nuestros momentos felices, un tesoro sin par,\nque guardo en mi alma, sin dudar.\nCada risa, un recuerdo, un dulce azar,\nmi alegría contigo, mi bello lugar."
+      },
+      {
+        razon: "Tu forma de hacerme sentir comprendido",
+        poema: "Me haces sentir comprendido, mi dulce verdad,\nentiendes mi alma, con gran claridad.\nTu empatía me calma, con gran lealtad,\nmi confidente, mi felicidad."
+      },
+      {
+        razon: "Nuestro amor en armonía",
+        poema: "Nuestro amor en armonía, una dulce canción,\nque fluye sin pausa, sin discusión.\nUn baile perfecto, mi bendición,\nmi dulce melodía, mi gran pasión."
+      },
+      {
+        razon: "Tu cabellito color rojito",
+        poema: "Tu cabello rojito, un fuego en tu piel,\nque ilumina tu rostro, mi dulce miel.\nUn toque de magia, un bello pincel,\nmi dulce llama, mi amor, mi laurel."
+      },
+      {
+        razon: "Nuestro futuro brillante",
+        poema: "Nuestro futuro brilla, un camino sin fin,\nlleno de sueños, mi dulce jazmín.\nJuntos lo construimos, de principio a fin,\nmi amor eterno, mi bello botín."
+      },
+      {
+        razon: "Tu forma de hacerme sentir inspirado",
+        poema: "Me haces sentir inspirado, mi dulce motor,\ncreo en mí mismo, sin ningún temor.\nTu luz me guía, mi dulce fulgor,\nmi musa eterna, mi mayor valor."
+      },
+      {
+        razon: "Nuestros momentos de pasión",
+        poema: "Nuestros momentos de pasión, un fuego sin fin,\nque enciende el alma, mi dulce jazmín.\nCada caricia, un bello festín,\nmi amor ardiente, mi dulce botín."
+      },
+      {
+        razon: "Tu forma de hacerme sentir enamorado",
+        poema: "Me haces sentir enamorado, cada día más,\ntu amor me envuelve, sin solaz.\nEres mi universo, mi paz,\nmi amor más grande, mi dulce solaz."
+      },
+      {
+        razon: "Tu amor por la coca",
+        poema: "Tu amor por la coca, un dulce placer,\nuna chispa de vida, al amanecer.\nMe encanta tu gusto, sin perecer,\nmi dulce adicción, mi bello placer."
+      },
+      {
+        razon: "Tus palabras de confianza",
+        poema: "Tus palabras de confianza, un bálsamo al alma,\nme llenan de seguridad, me dan la calma.\nCada frase tuya, mi dulce palma,\nmi pilar de fuerza, mi dulce alarma."
+      },
+      {
+        razon: "Nuestro amor para siempre",
+        poema: "Nuestro amor para siempre, un lazo inmortal,\nque trasciende el tiempo, es algo real.\nUn amor eterno, sin final,\nmi dulce destino, mi dulce ideal."
+      },
+      {
+        razon: "El amor que sientes por mí",
+        poema: "El amor que sientes por mí, un don celestial,\nque me llena el alma, sin igual.\nTu cariño me nutre, mi dulce caudal,\nmi amor eterno, mi dulce ideal."
+      }
+      // Asegúrate de añadir los poemas restantes aquí, siguiendo este formato
+    ];
+
+    function reproducirMusica() {
+      const musica = document.getElementById('musicaDeFondo');
+      if (musica) {
+        musica.play().catch(e => console.error("Error al reproducir la música:", e));
+      }
+    }
+
+    function mostrarSorpresa() {
+      document.getElementById("primeraParte").style.display = "none";
+      document.getElementById("segundaParte").style.display = "block";
+    }
+
+    function mostrarLista() {
+      const lista = document.getElementById("lista");
+      lista.style.display = "flex";
+      cosas.forEach((itemData, i) => {
+        setTimeout(() => {
+          const item = document.createElement("div");
+          item.className = "item";
+
+          const razonElement = document.createElement("div");
+          razonElement.className = "razon-titulo";
+          razonElement.textContent = `${i + 1}. ${itemData.razon}`;
+
+          const poemaElement = document.createElement("div");
+          poemaElement.className = "poema-texto";
+          poemaElement.textContent = itemData.poema;
+
+          item.appendChild(razonElement);
+          item.appendChild(poemaElement);
+          lista.appendChild(item);
+        }, i * 200);
+      });
+      document.getElementById("segundaParte").style.display = "none";
+
+      // ¡Esta es la parte que reproduce la música al hacer clic!
+      reproducirMusica();
+    }
+  </script>
+</body>
+</html>
